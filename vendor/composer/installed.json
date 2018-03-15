@@ -1,0 +1,93 @@
+[
+    {
+        "name": "mohuishou/image-ocr",
+        "version": "0.1.1",
+        "version_normalized": "0.1.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/mohuishou/ImageOCR.git",
+            "reference": "9e4cb4b963471a0e050cd730d331be017c245c65"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/mohuishou/ImageOCR/zipball/9e4cb4b963471a0e050cd730d331be017c245c65",
+            "reference": "9e4cb4b963471a0e050cd730d331be017c245c65",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">5.4"
+        },
+        "time": "2016-12-29T08:43:21+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Mohuishou\\ImageOCR\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "mohuishou",
+                "email": "1@lailin.xyz"
+            }
+        ],
+        "description": "验证码识别",
+        "keywords": [
+            "OCR",
+            "image",
+            "验证码",
+            "验证码识别"
+        ]
+    },
+    {
+        "name": "thiagoalessio/tesseract_ocr",
+        "version": "2.2.2",
+        "version_normalized": "2.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/thiagoalessio/tesseract-ocr-for-php.git",
+            "reference": "ebd243ecc65d5d06d88113cd81df0f1cda19d2dc"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/thiagoalessio/tesseract-ocr-for-php/zipball/ebd243ecc65d5d06d88113cd81df0f1cda19d2dc",
+            "reference": "ebd243ecc65d5d06d88113cd81df0f1cda19d2dc",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.6 || ^7.0"
+        },
+        "require-dev": {
+            "codacy/coverage": "dev-master",
+            "phpunit/php-code-coverage": "^4.0.8"
+        },
+        "time": "2018-02-26T23:31:49+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "thiagoalessio\\TesseractOCR\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "thiagoalessio",
+                "email": "thiagoalessio@me.com"
+            }
+        ],
+        "description": "A wrapper to work with Tesseract OCR inside PHP.",
+        "keywords": [
+            "OCR",
+            "Tesseract",
+            "text recognition"
+        ]
+    }
+]
