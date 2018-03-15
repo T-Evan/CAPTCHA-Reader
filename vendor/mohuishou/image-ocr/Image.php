@@ -105,6 +105,7 @@ class Image{
                 }
             }
         }
+        //去除验证码两侧干扰线
         for ($i = 0; $i<$this->_image_h;$i++){
              for ($j = 0; $j<25;$j++) {
                  $hash_data[$i][$j] = 0;
