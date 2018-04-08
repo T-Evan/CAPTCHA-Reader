@@ -7,10 +7,6 @@ namespace Composer\Autoload;
 class ComposerStaticInit183b2e0d374fc747f6b7baf5f8183657
 {
     public static $prefixLengthsPsr4 = array (
-        't' => 
-        array (
-            'thiagoalessio\\TesseractOCR\\' => 27,
-        ),
         'M' => 
         array (
             'Mohuishou\\ImageOCR\\' => 19,
@@ -18,10 +14,6 @@ class ComposerStaticInit183b2e0d374fc747f6b7baf5f8183657
     );
 
     public static $prefixDirsPsr4 = array (
-        'thiagoalessio\\TesseractOCR\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/thiagoalessio/tesseract_ocr/src',
-        ),
         'Mohuishou\\ImageOCR\\' => 
         array (
             0 => __DIR__ . '/..' . '/mohuishou/image-ocr',

@@ -1,7 +1,12 @@
 <?php
-
+error_reporting(E_ERROR);
 use Mohuishou\ImageOCR;
 require 'vendor/autoload.php';
+showImg('http://coin.lib.scuec.edu.cn/reader/captcha.php');
+showImg('http://coin.lib.scuec.edu.cn/reader/captcha.php');
+showImg('http://coin.lib.scuec.edu.cn/reader/captcha.php');
+showImg('http://coin.lib.scuec.edu.cn/reader/captcha.php');
+showImg('http://coin.lib.scuec.edu.cn/reader/captcha.php');
 showImg('http://coin.lib.scuec.edu.cn/reader/captcha.php');
 
 function showImg($img){
@@ -12,7 +17,7 @@ function showImg($img){
     $image_ocr=new  Mohuishou\ImageOCR\Image($img);
 //$image_ocr=new  Mohuishou\ImageOCR\Image("./captcha.png");
 
-    $image_ocr->draw();
+    //$image_ocr->draw();
     print_r($image_ocr->find()) ;
 
 

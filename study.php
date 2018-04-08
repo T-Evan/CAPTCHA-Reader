@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(E_ERROR);
 require_once 'vendor/autoload.php';
 $db=new \Mohuishou\ImageOCR\StorageFile();
 //$a=$db->get();

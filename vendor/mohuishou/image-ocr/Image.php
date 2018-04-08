@@ -129,6 +129,8 @@ class Image{
      */
     public function isHotSpots($i,$j,$hash_data){
         if($i == 0 || $j == 0 || $i == ($this->_image_h - 1) || $j == ($this->_image_w - 1)) return true;
+        //根据干扰线垂直像素点不超过四个，进行去除
+        if(!$hash_data[$i-2][$j] &&  !$hash_data[$i+2][$j] && !$hash_data[$i+3][$j]) return true;
 
 
         //待检查点为中心的九个点
