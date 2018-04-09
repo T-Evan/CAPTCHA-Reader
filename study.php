@@ -1,5 +1,4 @@
 <?php
-error_reporting(E_ERROR);
 require_once 'vendor/autoload.php';
 $db=new \Mohuishou\ImageOCR\StorageFile();
 //$a=$db->get();
@@ -18,6 +17,8 @@ if(isset($_POST['send'])&&$_POST['send']=="send"){
 
 }else{
     $image=new \Mohuishou\ImageOCR\Image("http://coin.lib.scuec.edu.cn/reader/captcha.php");
+    $image->draw(); //开启调试
+
     imagepng($image->_in_img,"./img/inImgTemp.png");
 }
 

@@ -5,8 +5,8 @@ namespace Mohuishou\ImageOCR;
 class Image{
 
     //标准化的图像的宽高信息，可调
-    const HASH_W = 10;
-    const HASH_H = 10;
+    const HASH_W = 100;
+    const HASH_H = 100;
 
     //图像字符串的个数
     const CHAR_NUM=4;
@@ -86,7 +86,7 @@ class Image{
         $this->_hash_data=$this->removeHotSpots($data);
         $this->removeZero();
 
-//        $this->draw();
+      //$this->draw(); //开启调试
 
 
     }
@@ -130,7 +130,9 @@ class Image{
     public function isHotSpots($i,$j,$hash_data){
         if($i == 0 || $j == 0 || $i == ($this->_image_h - 1) || $j == ($this->_image_w - 1)) return true;
         //根据干扰线垂直像素点不超过四个，进行去除
-        if(!$hash_data[$i-2][$j] &&  !$hash_data[$i+2][$j] && !$hash_data[$i+3][$j]) return true;
+        if(isset($hash_data[$i-2][$j]) &&  isset($hash_data[$i+2][$j])&& isset($hash_data[$i+3][$j])){
+            if(!$hash_data[$i-2][$j] &&  !$hash_data[$i+2][$j] && !$hash_data[$i+3][$j]) return true;
+        }
 
 
         //待检查点为中心的九个点
@@ -197,15 +199,46 @@ class Image{
      * @param int $n 图片的第几个字符
      * @return array $hash_data 标准化之后的二值化图像字符串
      */
-        public function splitImage($n){
+public function splitImage($n){
         $data=[];
         $a=$this->_image_w/self::CHAR_NUM;
-        for($i=$n*$a;$i<($n+1)*$a;$i++){
-            $column=array_column($this->_hash_data,$i);
-            if(implode("",$column)!=0){
-                $data[]=$column;
-            }
+
+if ($n==0){
+    for($i=$n*$a;$i<($n+1)*$a+20;$i++){
+        $column=array_column($this->_hash_data,$i);
+        if(implode("",$column)!=0){
+            $data[]=$column;
         }
+    }
+}elseif ($n==3){
+    for($i=$n*$a-10;$i<($n+1)*$a+20;$i++){
+        $column=array_column($this->_hash_data,$i);
+        if(implode("",$column)!=0){
+            $data[]=$column;
+        }
+    }
+}elseif ($n==2){
+    for($i=$n*$a;$i<($n+1)*$a-10;$i++){
+        $column=array_column($this->_hash_data,$i);
+        if(implode("",$column)!=0){
+            $data[]=$column;
+        }
+    }
+}else{
+    for($i=$n*$a+10;$i<($n+1)*$a;$i++){
+        $column=array_column($this->_hash_data,$i);
+        if(implode("",$column)!=0){
+            $data[]=$column;
+        }
+    }
+}
+
+
+//            if(array_count_values($column)[1]<100){
+//                $data[]=$column;
+//            }
+//            print_r(array_count_values($column));
+
 
         $out_img_w=count($data)+4;
         $out_img_h=count($data[0])+4;
@@ -224,10 +257,7 @@ class Image{
             }
         }
 
-
-
-//        imagepng($out_img,'./test.png');
-
+       //imagepng($out_img,'./img/'.$n.'a'.time().'.png'); //保存每个分割字符用作debug
         //图像标准化
         $hash_img=$this->imageStandard($out_img,$out_img_w,$out_img_h);
 
@@ -243,12 +273,8 @@ class Image{
                 }
             }
         }
-//        imagepng($hash_img,'./test1.png');
+        //imagepng($hash_img,'./img/test'.$n.time().'.png'); //保存每个标准化之后的分割字符用作debug
         return $hash_img_data;
-
-
-
-
 
     }
 
@@ -261,6 +287,7 @@ class Image{
     public function imageStandard($img){
         $min_w=999;
         $oimg=$img;
+//        imagepng($img,'./img/1aa'.time().'.png');
 
         $c=imagecolorallocate($img, 255, 255, 255);
         for($i=-30;$i<30;$i++){
@@ -291,8 +318,8 @@ class Image{
                 imagesetpixel($out_img, $k,$key, $c);
             }
         }
+        //imagepng($out_img,'./img/'.time().'.png');
 
-//        imagepng($out_img,'./0.png');
 
 
         $hash_img = imagecreatetruecolor(self::HASH_W, self::HASH_H);
@@ -385,7 +412,7 @@ class Image{
                     $s=$c;
                     $code=$k;
                 }
-                if($s>0.99*count($samples_hash_data)){
+                if($s>0.8*count($samples_hash_data)){
 //                    echo 0.8*count($samples_hash_data);
                     return $k;
                 }
