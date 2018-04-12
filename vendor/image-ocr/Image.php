@@ -1,6 +1,7 @@
 <?php
+namespace My\ImageOCR;
 
-namespace Mohuishou\ImageOCR;
+require "StorageFile.php";
 
 class Image
 {

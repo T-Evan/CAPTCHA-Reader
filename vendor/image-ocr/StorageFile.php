@@ -1,6 +1,7 @@
 <?php
 
-namespace Mohuishou\ImageOCR;
+namespace My\ImageOCR;
+
 class StorageFile{
     /**
      * 储存文件目录
