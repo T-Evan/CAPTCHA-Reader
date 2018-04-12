@@ -6,8 +6,8 @@ class Image
 {
 
     //标准化的图像的宽高信息，可调
-    const HASH_W = 100;
-    const HASH_H = 100;
+    const HASH_W = 40;
+    const HASH_H = 40;
 
     //图像字符串的个数
     const CHAR_NUM = 4;
@@ -264,7 +264,7 @@ class Image
             }
         }
 
-        //imagepng($out_img,'./img/'.$n.'a'.time().'.png'); //保存每个分割字符用作debug
+       // imagepng($out_img,'./img/'.$n.'a'.time().'.png'); //保存每个分割字符用作debug
         //图像标准化
         $hash_img = $this->imageStandard($out_img, $out_img_w, $out_img_h);
 
@@ -280,7 +280,7 @@ class Image
                 }
             }
         }
-        //imagepng($hash_img,'./img/test'.$n.time().'.png'); //保存每个标准化之后的分割字符用作debug
+      //  imagepng($hash_img,'./img/test'.$n.time().'.png'); //保存每个标准化之后的分割字符用作debug
         return $hash_img_data;
 
     }
